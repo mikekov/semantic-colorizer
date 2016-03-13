@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.Composition;
-using System.Windows.Media;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 
@@ -9,12 +8,12 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.FieldFormat)]
     [Name(Constants.FieldFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticFieldFormat : ClassificationFormatDefinition
     {
         public SemanticFieldFormat() {
             this.DisplayName = "Semantic Field";
-            this.ForegroundColor = Colors.SaddleBrown;
+            //this.ForegroundColor = Colors.SaddleBrown;
         }
     }
 
@@ -22,7 +21,7 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.EnumFieldFormat)]
     [Name(Constants.EnumFieldFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticEnumFieldFormat : ClassificationFormatDefinition
     {
         public SemanticEnumFieldFormat() {
@@ -34,12 +33,13 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.ExtensionMethodFormat)]
     [Name(Constants.ExtensionMethodFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticExtensionMethodFormat : ClassificationFormatDefinition
     {
         public SemanticExtensionMethodFormat() {
             this.DisplayName = "Semantic Extension Method";
-            this.IsItalic = true;
+//			TextDecorations = System.Windows.TextDecorations.Underline;
+//            this.IsItalic = true;
         }
     }
 
@@ -88,7 +88,7 @@ namespace SemanticColorizer
     {
         public SemanticTypeParameterFormat() {
             this.DisplayName = "Semantic Type Parameter";
-            this.ForegroundColor = Colors.SlateGray;
+            //this.ForegroundColor = Colors.SlateGray;
         }
     }
 
@@ -96,12 +96,12 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.ParameterFormat)]
     [Name(Constants.ParameterFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticParameterFormat : ClassificationFormatDefinition
     {
         public SemanticParameterFormat() {
             this.DisplayName = "Semantic Parameter";
-            this.ForegroundColor = Colors.SlateGray;
+            //this.ForegroundColor = Colors.SlateGray;
         }
     }
 
@@ -109,12 +109,12 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.NamespaceFormat)]
     [Name(Constants.NamespaceFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticNamespaceFormat : ClassificationFormatDefinition
     {
         public SemanticNamespaceFormat() {
             this.DisplayName = "Semantic Namespace";
-            this.ForegroundColor = Colors.LimeGreen;
+            //this.ForegroundColor = Colors.LimeGreen;
         }
     }
 
@@ -146,7 +146,7 @@ namespace SemanticColorizer
     [ClassificationType(ClassificationTypeNames = Constants.TypeSpecialFormat)]
     [Name(Constants.TypeSpecialFormat)]
     [UserVisible(true)]
-    [Order(After = Priority.Default)]
+    [Order(After = Priority.High)]
     internal sealed class SemanticTypeSpecialFormat : ClassificationFormatDefinition
     {
         public SemanticTypeSpecialFormat() {
@@ -165,4 +165,83 @@ namespace SemanticColorizer
             this.DisplayName = "Semantic Normal Type";
         }
     }
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.ModifierFormat)]
+	[Name(Constants.ModifierFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.High)]
+	internal sealed class SemanticTypeAccessModifier : ClassificationFormatDefinition
+	{
+		public SemanticTypeAccessModifier()
+		{
+			DisplayName = "Semantic Modifier";
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.KeywordFormat)]
+	[Name(Constants.KeywordFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.Default)]
+	internal sealed class SemanticKeywordFormat : ClassificationFormatDefinition
+	{
+		public SemanticKeywordFormat()
+		{
+			DisplayName = "Semantic Keyword";
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.ConstantFormat)]
+	[Name(Constants.ConstantFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.High)]
+	internal sealed class SemanticConstantFormat : ClassificationFormatDefinition
+	{
+		public SemanticConstantFormat()
+		{
+			DisplayName = "Semantic Constant";
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.DeclarationFormat)]
+	[Name(Constants.DeclarationFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.High)]
+	internal sealed class SemanticDeclarationFormat : ClassificationFormatDefinition
+	{
+		public SemanticDeclarationFormat()
+		{
+			DisplayName = "Semantic Declaration";
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.EventFormat)]
+	[Name(Constants.EventFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.High)]
+	internal sealed class SemanticEventFormat : ClassificationFormatDefinition
+	{
+		public SemanticEventFormat()
+		{
+			DisplayName = "Semantic Event";
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = Constants.AttributeFormat)]
+	[Name(Constants.AttributeFormat)]
+	[UserVisible(true)]
+	[Order(After = Priority.High)]
+	internal sealed class SemanticAttributeFormat : ClassificationFormatDefinition
+	{
+		public SemanticAttributeFormat()
+		{
+			DisplayName = "Semantic Attribute";
+		}
+	}
+
 }
